@@ -32,16 +32,20 @@
       axios.post('https://heedh.cn/get_video', {
         id: getQueryString("video")
       }).then(function (response) {
-
-        let player=new Player({
-          id: 'mse',
-          autoplay: true,
-          volume: 0.3,
-          url: response.data.url,
-          playsinline: true,
-          height: window.innerHeight,
-          width: window.innerWidth
-        });
+        if (response.data.code == 1){
+          document.title = response.data.title
+          let player=new Player({
+            id: 'mse',
+            autoplay: true,
+            volume: 0.3,
+            url: response.data.url,
+            playsinline: true,
+            height: window.innerHeight,
+            width: window.innerWidth
+          });
+        }else{
+          alert("404 网页未找到")
+        }
 
         })
         .catch(function (error) {
