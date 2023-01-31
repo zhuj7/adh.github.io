@@ -1,0 +1,104 @@
+{
+    "header": [
+        " *   ",
+        " *   如非需要调试，本文件可删除",
+        " *   非专业人员可将本文件删除",
+        " *   详细介绍请参考: https://bazhan.wang/faq#INFO-JSON",
+        " *   "
+    ],
+    "resources": [
+        {
+            "url": "http://xch6.cn/",
+            "path": "index.html",
+            "saved": true,
+            "size": 5276,
+            "children": [
+                {
+                    "url": "http://43.129.97.172:8888/down/ui8aKQ9ZYnLj",
+                    "saved": false
+                },
+                {
+                    "url": "http://43.129.97.172:8888/down/ui8aKQ9ZYnLj",
+                    "saved": false
+                },
+                {
+                    "url": "http://xch6.cn/js/script.js",
+                    "path": "js/script.js",
+                    "saved": true,
+                    "size": 759
+                },
+                {
+                    "url": "http://xch6.cn/css/style.css",
+                    "path": "css/style.css",
+                    "saved": true,
+                    "size": 8531,
+                    "children": [
+                        {
+                            "url": "http://xch6.cn/img/bg.jpg",
+                            "path": "img/bg.jpg",
+                            "saved": true,
+                            "size": 132453
+                        }
+                    ]
+                },
+                {
+                    "url": "http://xch6.cn/favicon.ico",
+                    "path": "favicon.ico",
+                    "saved": true,
+                    "size": 3278
+                }
+            ]
+        }
+    ],
+    "alias": "xch6-cn-wjvioyxo",
+    "info": {
+        "remark": [],
+        "title": "瑕疵导航页-务必收藏",
+        "domain": "xch6.cn",
+        "origin": "http://xch6.cn",
+        "ip": "43.129.97.172",
+        "main": "index.html",
+        "url": "http://xch6.cn/",
+        "totalSize": "150 kB",
+        "request": {
+            "headers": {
+                "accept": "text/html,*/*",
+                "accept-language": "zh-CN,zh;q=0.9",
+                "cache-control": "no-cache",
+                "cookie": "",
+                "referer": "http://xch6.cn/",
+                "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36",
+                "x-scraper-website": "https://bazhan.wang/"
+            }
+        },
+        "response": {
+            "responseUrl": "http://xch6.cn/",
+            "redirects": [],
+            "statusCode": 200,
+            "headers": {
+                "date": "Tue, 31 Jan 2023 19:35:59 GMT",
+                "server": "Apache",
+                "upgrade": "h2",
+                "connection": "Upgrade, close",
+                "last-modified": "Wed, 26 Oct 2022 23:01:21 GMT",
+                "etag": "\"15d0-5ebf800cfeaa0-gzip\"",
+                "accept-ranges": "bytes",
+                "vary": "Accept-Encoding",
+                "content-length": "2288",
+                "content-type": "text/html"
+            }
+        },
+        "time": {
+            "start": "2023-01-31T19:35:58.812Z",
+            "end": "2023-01-31T19:36:29.936Z"
+        }
+    },
+    "options": {
+        "url": "http://xch6.cn/",
+        "referer": "",
+        "cookies": "",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36",
+        "formatter": [],
+        "filenameGenerator": "byType"
+    }
+}
