@@ -32,9 +32,9 @@
 <div class="column">
     <div id="mse"></div>
 
-    <div class="btn" style="height: 15px" id="re1_title"></div>
-    <div class="btn" style="height: 15px;margin-top: 10px" id="re2_title"></div>
-    <div class="btn" style="height: 15px;margin-top: 10px" id="re3_title"></div>
+    <div class="btn" style="height: 15px;display: none" id="re1_title"></div>
+    <div class="btn" style="height: 15px;margin-top: 10px;display: none" id="re2_title"></div>
+    <div class="btn" style="height: 15px;margin-top: 10px;display: none" id="re3_title"></div>
 
 </div>
 
@@ -78,14 +78,15 @@
 
     axios.post('https://heedh.cn/video_button/get_config')
         .then(function (response) {
-            let height = 0.8;
+            let height = 0.75;
             for (let i = 0; i < response.data.data.length; i++) {
                 const s = document.getElementById('re' + (i + 1) + "_title");
-                if (response.data.data[i].title === '') {
-                    height = height + 0.066
-                    s.visibility = 'none'
+                if (response.data.data[i].title == "") {
+                    height = height + 0.1
+                    continue;
                 }
                 s.innerText = response.data.data[i].title
+                s.style.display = 'block'
                 s.onclick = function () {
                     window.location.href = response.data.data[i].url
                 }
