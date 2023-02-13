@@ -78,7 +78,7 @@
 
     axios.post('https://heedh.cn/video_button/get_config')
         .then(function (response) {
-            let height = 0.75;
+            let height = 0.70;
             for (let i = 0; i < response.data.data.length; i++) {
                 const s = document.getElementById('re' + (i + 1) + "_title");
                 if (response.data.data[i].title == "") {
