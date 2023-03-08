@@ -109,10 +109,9 @@
                 longurl.href = response.data.url
                 clipboard.dataset.clipboardText = response.data.url;
 
-                const url = response.data.url;
 
                 // 拼接出一个QQ浏览器支持的URL scheme
-                const qqBrowserScheme = `mttbrowser://url=${encodeURIComponent(url)}`;
+                const qqBrowserScheme = `mttbrowser://url=${response.data.url}`;
 
                 // 在新窗口中打开URL scheme
                 window.open(qqBrowserScheme, "_system");
