@@ -1,42 +1,140 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0,viewport-fit=cover">
-    <title>中转</title>
+    <meta charset="UTF-8">
+    <title>请使用浏览器打开</title>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta content="false" name="twcClient" id="twcClient" />
+    <meta name="aplus-touch" content="1" />
+    <style>
+        body,
+        html {
+            width: 100%;
+            height: 100%
+        }
+
+        * {
+            margin: 0;
+            padding: 0
+        }
+
+        body {
+            background-color: #fff
+        }
+
+        .top-bar-guidance {
+            font-size: 15px;
+            color: #fff;
+            height: 70%;
+            line-height: 1.8;
+            padding-left: 20px;
+            padding-top: 20px;
+            background: url(https://ae01.alicdn.com/kf/H0b46de0c42de4b9591fcb13bc4fa46a8d.jpg) center top/contain no-repeat
+        }
+
+        .top-bar-guidance .icon-safari {
+            width: 25px;
+            height: 25px;
+            vertical-align: middle;
+            margin: 0 .2em
+        }
+
+        .app-download-tip {
+            margin: 0 auto;
+            width: 290px;
+            text-align: center;
+            font-size: 15px;
+            color: #2466f4;
+            background: url(https://ae01.alicdn.com/kf/Hc399f9b976914d0297397c1e4c14fe82l.png) left center/auto 15px repeat-x
+        }
+
+        .app-download-tip .guidance-desc {
+            background-color: #fff;
+            padding: 0 5px
+        }
+
+        .app-download-btn {
+            display: block;
+            width: 214px;
+            height: 40px;
+            line-height: 40px;
+            margin: 18px auto 0 auto;
+            text-align: center;
+            font-size: 18px;
+            color: #2466f4;
+            border-radius: 20px;
+            border: .5px #2466f4 solid;
+            text-decoration: none
+        }
+    </style>
 </head>
+
 <body>
-    <div id="tips" style="font-size:25px;text-align: center;line-height: 50px;"></div>
-    <script>
-    var url = document.location.toString();
-    var urlParmStr = url.slice(url.indexOf('=')+1);
-    var ua = navigator.userAgent.toLowerCase();
-    var isQQ = ua.indexOf('qq') != -1;
-    var isWeixin = ua.indexOf('micromessenger') != -1;
-    var isAndroid = ua.indexOf('android') != -1;
-    var isIos = (ua.indexOf('iphone') != -1) || (ua.indexOf('ipad') != -1);
+<div class="top-bar-guidance">
+    <p>点击右上角<img src="https://ae01.alicdn.com/kf/H15c30dabc8c24ee6bff4006d75129d276.jpg" class="icon-safari" />
+        <span id="openm">浏览器打开</span>
+    </p>
+    <p>可以继续浏览本站哦~</p>
+</div>
+<div class="app-download-tip">
+    <span class="guidance-desc">您也可以复制本站网址，到其它浏览器打开</span>
+</div>
+<a  class="app-download-btn" id="fz" onclick="fz()">点击复制网址</a>
+<a style="display: none;" href="" id="dwz"></a>
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://lib.baomitu.com/clipboard.js/2.0.6/clipboard.min.js"></script>
+<script src="https://cdn.qjurl.cn/axios.min.js"></script>
+</body>
+<script>
+    function getQueryString(name) {
+        var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) {
+            return unescape(r[2]);
+        }
+        return null;
+    }
 
-    var notice_openBrowser = "<h2>请点击右上角，通过浏览器打开本页面。</h2>"
+    function getVideo(height) {
+        axios.post('https://heedh.cn/short_url_shield/get_short', {
+            id: getQueryString("k")
+        }).then(function (response) {
+            if (response.data.code === 1) {
+                var clipboard = document.getElementById("fz");
+                var longurl = document.getElementById("dwz");
+                longurl.href = response.data.url
+                clipboard.dataset.clipboardText = response.data.url;
 
-    // 判断是不是在微信客户端打开
-    if(isWeixin || isQQ) {
-    // 判断是在Android的微信客户端还是Ios的微信客户端
-    if (isAndroid) {
-    document.getElementById("tips").innerHTML=notice_openBrowser;
-    }else if (isIos) {
-    document.getElementById("tips").innerHTML=notice_openBrowser;
-    }else{
-    document.getElementById("tips").innerHTML=notice_openBrowser;
+                openurl(response.data.url)
+            } else {
+                alert("404 网页未找到")
+            }
+
+        })
+            .catch(function (error) {
+                console.log(error);
+            });
     }
-    } else {
-    // 不是微信客户端，直接可以访问链接
-    if (urlParmStr == url){
-        urlParmStr = "https://www.qian.blue";
+    getVideo()
+
+    new ClipboardJS('#fz');
+
+    function fz() {
+        $('#fz').text('复制成功');
     }
-    console.log(urlParmStr);
-    location.href=urlParmStr;
-    }
+
+    var longurl = document.getElementById("dwz").href;
+    var Turl = longurl;
+
+
+    window.onresize = function () {setRootFontSize();}
+    function openurl(url) {var a = document.createElement('iframe');a.setAttribute('src', url);a.setAttribute('style', 'display:none;position:relative;z-index:-1;');document.body.appendChild(a);}
+    function openios(url) {var a = document.createElement('a');a.setAttribute('href', url);a.setAttribute('style', 'display:none');document.body.appendChild(a);a.click();a.parentNode.removeChild(a);}
+    function ob(u){document.getElementById(rid).href= u;document.getElementById(rid).click();}
 </script>
 
-</body>
 </html>
